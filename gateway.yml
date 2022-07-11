@@ -1,0 +1,24 @@
+server:
+  port: 56032
+
+eureka:
+  instance:
+   hostname: localhost
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    discovery:
+        locator:
+          enabled: true
+    gateway:
+      routes:
+        - id: config-service
+          uri: lb://config-service
+          predicates:
+            - Path=/v1/config/**
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/v1/user/**
