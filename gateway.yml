@@ -29,7 +29,7 @@ spring:
         - id: campaign-service
           uri: lb://campaign-service
           predicates:
-            - Path=v1/campaign/**
+            - Path=/v1/campaign/**
       globalcors:
         corsConfigurations:
           '[/**]':
